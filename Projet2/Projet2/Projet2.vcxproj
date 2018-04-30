@@ -116,6 +116,7 @@
     <ClInclude Include="AttributCarac.h" />
     <ClInclude Include="AttributID.h" />
     <ClInclude Include="AttributNum.h" />
+    <ClInclude Include="Signature.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Analyse.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="AttributCarac.cpp" />
     <ClCompile Include="AttributID.cpp" />
     <ClCompile Include="AttributNum.cpp" />
+    <ClCompile Include="Signature.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
