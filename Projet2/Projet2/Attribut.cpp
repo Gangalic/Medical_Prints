@@ -1,3 +1,4 @@
+using namespace std;
 #include <string>
 #include "Attribut.h"
 
