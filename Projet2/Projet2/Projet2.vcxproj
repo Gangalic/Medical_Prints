@@ -111,12 +111,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Analyse.h" />
     <ClInclude Include="Attribut.h" />
     <ClInclude Include="AttributCarac.h" />
     <ClInclude Include="AttributID.h" />
     <ClInclude Include="AttributNum.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Analyse.cpp" />
     <ClCompile Include="Attribut.cpp" />
     <ClCompile Include="AttributCarac.cpp" />
     <ClCompile Include="AttributID.cpp" />
