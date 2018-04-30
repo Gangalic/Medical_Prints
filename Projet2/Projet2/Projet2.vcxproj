@@ -111,6 +111,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Attribut.h" />
+    <ClInclude Include="AttributCarac.h" />
+    <ClInclude Include="AttributID.h" />
+    <ClInclude Include="AttributNum.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Attribut.cpp" />
+    <ClCompile Include="AttributCarac.cpp" />
+    <ClCompile Include="AttributID.cpp" />
+    <ClCompile Include="AttributNum.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
