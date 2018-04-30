@@ -1,3 +1,6 @@
+#if ! defined (Attribut_H)
+#define Attribut_H
+
 class Attribut
 {
 public:
@@ -7,3 +10,4 @@ protected:
 	string nom;
 };
 
+#endif
