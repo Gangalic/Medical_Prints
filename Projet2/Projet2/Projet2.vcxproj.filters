@@ -27,7 +27,7 @@
     <ClInclude Include="AttributCarac.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Signature.h">
+    <ClInclude Include="Analyse.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Lecture.h">
@@ -53,7 +53,7 @@
     <ClCompile Include="AttributCarac.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Signature.cpp">
+    <ClCompile Include="Analyse.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Lecture.cpp">
