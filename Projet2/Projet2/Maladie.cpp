@@ -16,6 +16,10 @@ void Maladie::AffichageMaladie() {
 	cout << nomMaladie <<"\n";
 }
 
+string Maladie::getNom() {
+	return nomMaladie;
+}
+
 Maladie::~Maladie()
 {
 }
