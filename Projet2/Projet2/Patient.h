@@ -9,6 +9,7 @@ class Patient
 public:
 	Patient(Signature laSignature);
 	void AffichagePatient();
+	Signature getSignature();
 	~Patient();
 
 private:
