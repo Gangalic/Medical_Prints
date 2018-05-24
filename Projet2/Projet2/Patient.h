@@ -14,6 +14,7 @@ public:
 
 private:
 	Signature uneSignature;
+	multimap<string, double> risqueMaladie;
 };
 
 #endif

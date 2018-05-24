@@ -7,7 +7,7 @@ class Signature
 {
 public:
 	void AjouterAttribut(Attribut * nouvAttribut);
-	auto getIdSignature();
+	int getIdSignature();
 	Signature();
 	~Signature();
 protected:
