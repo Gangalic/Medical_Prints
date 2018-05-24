@@ -7,7 +7,7 @@ class AttributNum : public Attribut {
 public:
 
 	AttributNum(string valInput, string name);
-
+	auto getValue();
 	~AttributNum();
 
 protected:

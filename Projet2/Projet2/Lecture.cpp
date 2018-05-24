@@ -9,6 +9,7 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
 	nomFichierPat = fichierPat;
+<<<<<<< HEAD
 
 	ifstream fichier(nomFichierMeta, ios::in);  // on ouvre en lecture
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
@@ -83,6 +84,8 @@ Signature Lecture::LireUneSignature(string line)
 	}
 	
 	return laSignature;
+=======
+>>>>>>> ecf3a93da67aa3e52e375de475d50c9c53a5a699
 }
 
 Maladie Lecture::LireUneMaladie(string line)

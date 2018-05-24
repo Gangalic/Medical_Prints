@@ -10,6 +10,10 @@ AttributCarac::AttributCarac(string valInput, string name) {
 	nom = name;
 }
 
+auto AttributCarac::getValue() {
+	return valeur;
+}
+
 AttributCarac::~AttributCarac() {
 #ifdef MAP
 	cout << "Appel au destructeur de <AttributCarac>" << endl;
