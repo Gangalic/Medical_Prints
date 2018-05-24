@@ -9,6 +9,7 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
 	nomFichierPat = fichierPat;
+	//some bla bla
 }
 
 Lecture::~Lecture() {
