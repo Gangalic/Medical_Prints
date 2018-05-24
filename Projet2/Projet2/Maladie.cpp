@@ -7,6 +7,8 @@ using namespace std;
 
 Maladie::Maladie(string leNom, Signature laSignature)
 {
+	nomMaladie = leNom;
+	uneSignature = laSignature;
 }
 
 // shows only the name + maybe add Signature details later

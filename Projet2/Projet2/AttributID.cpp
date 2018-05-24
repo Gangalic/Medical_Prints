@@ -10,6 +10,10 @@ AttributID::AttributID(string valInput, string name) {
 	nom = name;
 }
 
+auto AttributID::getValue() {
+	return valeur;
+}
+
 AttributID::~AttributID() {
 #ifdef MAP
 	cout << "Appel au destructeur de <AttributID>" << endl;

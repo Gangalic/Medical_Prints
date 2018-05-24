@@ -117,6 +117,7 @@
     <ClInclude Include="AttributNum.h" />
     <ClInclude Include="Lecture.h" />
     <ClInclude Include="Maladie.h" />
+    <ClInclude Include="Patient.h" />
     <ClInclude Include="Signature.h" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +127,7 @@
     <ClCompile Include="AttributNum.cpp" />
     <ClCompile Include="Lecture.cpp" />
     <ClCompile Include="Maladie.cpp" />
+    <ClCompile Include="Patient.cpp" />
     <ClCompile Include="Signature.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
