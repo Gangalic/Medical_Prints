@@ -1,7 +1,7 @@
 using namespace std;
 #include <string>
 #include "Lecture.h"
-
+//Commentaire
 Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 #ifdef MAP
 	cout << "Appel au constructeur de <Lecture>" << endl;
@@ -9,6 +9,7 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
 	nomFichierPat = fichierPat;
+	string s;
 }
 
 Lecture::~Lecture() {
