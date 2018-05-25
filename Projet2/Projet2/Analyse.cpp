@@ -1,6 +1,8 @@
 using namespace std;
 #include <map>
 #include <string>
+#include <cmath>
+#include <utility>
 #include "Analyse.h"
 
 
@@ -80,7 +82,7 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 			proba.push_back(1.0);
 		}
 		else {
-			proba.push_back(abs(deltaUnitaire/ delta[i]);
+			proba.push_back(abs(deltaUnitaire/ delta[i]));
 		}
 	}
 
