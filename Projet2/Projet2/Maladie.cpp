@@ -20,6 +20,10 @@ string Maladie::getNom() {
 	return nomMaladie;
 }
 
+Signature Maladie::getSignature() {
+	return uneSignature;
+}
+
 Maladie::~Maladie()
 {
 }
