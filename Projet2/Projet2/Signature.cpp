@@ -13,10 +13,13 @@ Signature::Signature()
 }
 
 // maybe to add to search it by type not just assume it's the first one
-auto Signature::getIdSignature() {
-	return tabAttributs[0]->getValue();
+int Signature::getIdSignature() {
+	return (int)tabAttributs[0]->getValue();
 }
 
+vector <Attribut *> Signature::getTabAttributs() {
+	return tabAttributs;
+}
 
 Signature::~Signature()
 {

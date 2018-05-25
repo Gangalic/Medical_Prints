@@ -9,10 +9,12 @@ class Patient
 public:
 	Patient(Signature laSignature);
 	void AffichagePatient();
+	Signature getSignature();
 	~Patient();
 
 private:
 	Signature uneSignature;
+	multimap<string, double> risqueMaladie;
 };
 
 #endif

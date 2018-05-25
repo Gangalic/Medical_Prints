@@ -6,12 +6,17 @@ class Analyse
 public:
     //Analyse();
 
+<<<<<<< HEAD
 //	void Analyse();
+=======
+	multimap<string,double> FaireAnalyse(Patient unPatient, vector<Maladie>maladies);
+>>>>>>> 483c775da1338cf6af1b3e12182e48e2adf226e2
 
-	double risqueNumerique();
+	double risqueNumerique(Attribut* attPatient,Attribut* attMaladie);
 
-	double risqueCategorique();
+	double risqueCategorique(Attribut* attPatient, Attribut* attMaladie);
 
+	
 	~Analyse();
 
 

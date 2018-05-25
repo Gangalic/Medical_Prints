@@ -8,6 +8,7 @@ public:
 
 	Maladie(string leNom, Signature laSignature);
 	void AffichageMaladie();
+	string getNom();
 	~Maladie();
 
 private:
