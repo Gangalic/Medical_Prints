@@ -4,9 +4,9 @@
 class Analyse
 {
 public:
-	Analyse();
+    //Analyse();
 
-	void Analyse();
+//	void Analyse();
 
 	double risqueNumerique();
 

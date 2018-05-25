@@ -2,7 +2,7 @@ using namespace std;
 #include "Analyse.h"
 
 
-
+/*
 Analyse::Analyse()
 {
 }
@@ -20,3 +20,4 @@ double risqueCategorique()
 Analyse::~Analyse()
 {
 }
+*/

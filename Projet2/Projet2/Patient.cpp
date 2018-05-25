@@ -9,8 +9,8 @@ Patient::Patient(Signature laSignature)
 }
 
 void Patient::AffichagePatient() {
-	cout << "\n";
-	cout << "Patient avec id " << uneSignature.getIdSignature() <<" a les maladies suivants:\n";
+    cout << "\n";
+    //cout << "Patient avec id " << uneSignature.getIdSignature() <<" a les maladies suivants:\n";
 
 }
 

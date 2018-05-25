@@ -2,6 +2,7 @@ using namespace std;
 #include <string>
 #include "Lecture.h"
 
+
 Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 #ifdef MAP
 	cout << "Appel au constructeur de <Lecture>" << endl;
@@ -9,12 +10,12 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
 	nomFichierPat = fichierPat;
-<<<<<<< HEAD
+
 
 	ifstream fichier(nomFichierMeta, ios::in);  // on ouvre en lecture
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
 	getline(fichier, contenu);
-	while(getline(fichier, contenu);)  
+    while(getline(fichier, contenu))
 	{
 			metadonnees.push_back(contenu);
 	}
@@ -28,26 +29,26 @@ void Lecture::LireMaladies(vector<Maladie> &tabMaladie)
 	ifstream fichier(nomFichierMal, ios::in);  // on ouvre en lecture
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
 	getline(fichier, contenu);
-	while(getline(fichier, contenu);)  
+    while(getline(fichier, contenu))
 	{
 			tabMaladie.push_back(LireUneMaladie(contenu));
 	}
 	fichier.close();
 }
 
-void Lecture::LireSignatures(vector<Signature> &tabSignature)
+void Lecture::LirePatients(vector<Patient> &tabPatient)
 {
 	ifstream fichier(nomFichierPat, ios::in);  // on ouvre en lecture
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
 	getline(fichier, contenu);
-	while(getline(fichier, contenu);)  
+    while(getline(fichier, contenu))
 	{
-			tabSignature.push_back(LireUneSignature(contenu));
+            tabPatient.push_back(LireUnPatient(contenu));
 	}
 	fichier.close();
 }
 
-Signature Lecture::LireUneSignature(string line)
+Patient Lecture::LireUnPatient(string line)
 {
 	Signature laSignature;
 	int pos = 0;
@@ -56,21 +57,21 @@ Signature Lecture::LireUneSignature(string line)
 	int i = 0;
 	while(pos != line.length())
 	{
-		if(metadonnees.substr(1,';').equals("ID"))
+        if(metadonnees[i].substr(1,';') == "ID")
 		{
-			attr = new AttributID(line.substr(pos,next_pos),metadonnees.substr(0,';').equals("ID"));
+            attr = new AttributID(line.substr(pos,next_pos),metadonnees[i].substr(1,';'));
 		}
-		else if(metadonnees.substr(1,';').equals("double"))
+        else if((metadonnees[0].substr(1,';') == "double"))
 		{
-			attr = new AttributNum(line.substr(pos,next_pos),metadonnees.substr(0,';').equals("ID"));
+            attr = new AttributNum(line.substr(pos,next_pos),metadonnees[i].substr(1,';'));
 		}
-		else if(metadonnees.substr(1,';').equals("string"))
+        else if((metadonnees[0].substr(1,';') == "string"))
 		{
-			attr = new AttributCarac(line.substr(pos,next_pos),metadonnees[i].substr(0,';').equals("ID"));
+            attr = new AttributCarac(line.substr(pos,next_pos),metadonnees[i].substr(1,';'));
 		}
 		else
 		{
-			attr = null;
+            attr = NULL;
 		}
 		laSignature.AjouterAttribut(attr);
 		pos = next_pos+1;
@@ -84,13 +85,12 @@ Signature Lecture::LireUneSignature(string line)
 	}
 	
 	return laSignature;
-=======
->>>>>>> ecf3a93da67aa3e52e375de475d50c9c53a5a699
+
 }
 
 Maladie Lecture::LireUneMaladie(string line)
 {
-	Signature laSignature = LireUneSignature(line.substr(0,line.find_last_of(';')-1));
+    Patient laSignature = LireUnPatient(line.substr(0,line.find_last_of(';')-1));
 	string nom = line.substr(line.find_last_of(';')+1, line.length());
 	Maladie laMaladie = Maladie(nom, laSignature);
 	return laMaladie;
