@@ -23,9 +23,10 @@ vector <Attribut *> Signature::getTabAttributs() {
 
 Signature::~Signature()
 {
-	vector<Attribut*>::iterator vIter;
+	// we don't give a **** about memory
+	/*vector<Attribut*>::iterator vIter;
 	for (vIter = tabAttributs.begin(); vIter != tabAttributs.end(); vIter++) {
 		delete * vIter;
-	}
+	}*/
 	tabAttributs.clear();
 }
