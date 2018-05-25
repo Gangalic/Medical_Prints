@@ -13,7 +13,7 @@ Analyse::Analyse()
 }
 
 //sending back a patient
-Patient FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
+Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 {
 	Patient patient = Patient(unPatient.getSignature());
 	vector<vector<double>> tabTousAttributs;
@@ -31,7 +31,7 @@ Patient FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 		//send i-th attribute of Patient and all illnesses to be able to calculate 
 		//individual probabilities of NOT having a certain illness
 		if (typeid(*unAttributPatient) == typeid(tempNum)) {
-			tabTousAttributs.push_back(risqueNumerique(unAttributPatient,unAttributChaqueMaladie));
+			tabTousAttributs.push_back(risqueNumerique(unAttributPatient, unAttributChaqueMaladie));
 		}
 		else if (typeid(*unAttributPatient) == typeid(tempCarac)) {
 			tabTousAttributs.push_back(risqueCategorique(unAttributPatient, unAttributChaqueMaladie));
@@ -45,21 +45,60 @@ Patient FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 		for (int j = 0; j < nbAttributsNonId; j++) {
 			sommeRisques += tabTousAttributs[j][i];
 		}
-		double risque = 1-sommeRisques/nbAttributsNonId;
-		pair<string, double> risqueUneMaladie = make_pair(maladies[i].getNom,risque);
+		double risque = 1 - sommeRisques / nbAttributsNonId;
+		pair<string, double> risqueUneMaladie = make_pair(maladies[i].getNom, risque);
 		patient.ajouterRisqueMaladie(risqueUneMaladie);
 	}
 	return patient;
 }
 
-vector<double> risqueNumerique(Attribut* attPatient, vector<Attribut*> attMaladie)
+vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> attMaladie)
 {
-	
+	vector<double> proba;
+	vector<double> delta;
+	double min = -100000.0;
+	double max = 100000.0;
+	for (unsigned int i = 0; i < attMaladie.size(); i++)
+	{
+		if ((double)attMaladie[i]->getValue() < min)
+		{
+			min = attMaladie[i]->getValue();
+		}
+		if ((double)attMaladie[i]->getValue() > max)
+		{
+			max = attMaladie[i]->getValue();
+		}
+		delta.push_back(max - min);
+	}
+
+	for (unsigned int i = 0; i < attMaladie.size(); i++)
+
+	{
+		if (delta[i] == 0.0)
+		{
+			proba.push_back(1.0);
+		}
+		else {
+			proba.push_back(abs(attMaladie[i]->getValue() - attPatient->getValue()) / delta[i]);
+		}
+	}
+
+	return (proba);
 }
 
-vector<double> risqueCategorique(Attribut* attPatient, vector<Attribut*> attMaladie)
+vector<double> Analyse::risqueCategorique(Attribut* attPatient, vector<Attribut*> attMaladie)
 {
-
+	vector<double> proba;
+	for (unsigned int i = 0; i < attMaladie.size(); i++)
+	{
+		if ((string)attMaladie[i]->getValue() == attPatient->getValue()) {
+			proba.push_back(0.0);
+		}
+		else {
+			proba.push_back(1.0);
+		}
+	}
+	return (proba);
 }
 
 Analyse::~Analyse()
