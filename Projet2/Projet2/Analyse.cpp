@@ -1,31 +1,32 @@
 using namespace std;
-#include "Analyse.h"
-#include "string"
-#include "Maladie.h"
 #include <map>
+#include <string>
 #include "Patient.h"
+#include "Analyse.h"
+#include "Maladie.h"
 
-/*
+
 Analyse::Analyse()
 {
 }
 
-multimap<string, double> FaireAnalyse(Patient unPatient, vector<Maladie>maladies)
+//sending back a patient
+Patient FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 {
-	Signature vSignature = unPatient.getSignature();
-	for (unsigned int i = 0; i < maladies.size(); i++)
-	{
-		risqueNumerique(vSignature)
+	Patient patient = Patient(unPatient.getSignature());
+	vector<vector<double>> tabTousAttributs;
+	for (int i = 0; i < maladies[0].getSignature().getTabAttributs().size(); i++) {
+		vector<Attribut *> unAttributChaqueMaladie;
+		//for (int j=0; )
 	}
-
 }
 
-double risqueNumerique(Attribut* attPatient, Attribut* attMaladie)
+vector<double> risqueNumerique(Attribut* attPatient, Attribut* attMaladie)
 {
 	
 }
 
-double risqueCategorique(Attribut* attPatient, Attribut* attMaladie)
+vector<double> risqueCategorique(Attribut* attPatient, Attribut* attMaladie)
 {
 
 }
@@ -33,4 +34,4 @@ double risqueCategorique(Attribut* attPatient, Attribut* attMaladie)
 Analyse::~Analyse()
 {
 }
-*/
+
