@@ -8,6 +8,7 @@ class Signature
 public:
 	void AjouterAttribut(Attribut * nouvAttribut);
 	int getIdSignature();
+	vector <Attribut *> getTabAttributs();
 	Signature();
 	~Signature();
 protected:
