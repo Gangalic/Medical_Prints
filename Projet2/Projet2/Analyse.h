@@ -6,7 +6,7 @@ class Analyse
 public:
 	Analyse();
 
-	
+	Patient FaireAnalyse(Patient unPatient, vector<Maladie> maladies);
 
 	vector<double> risqueNumerique(Attribut* attPatient,vector<Attribut*> attMaladie);
 
