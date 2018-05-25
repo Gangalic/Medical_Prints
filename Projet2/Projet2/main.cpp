@@ -11,6 +11,7 @@ using namespace std;
 
 int main()
 {
+	/*
 	string nomFichierMeta = "";
 	string nomFichierMaladie="";
 	string nomFichierPatient = "";
@@ -88,7 +89,7 @@ int main()
 		
 		
 	return 0;
-	
+	*/
 }
 
 
