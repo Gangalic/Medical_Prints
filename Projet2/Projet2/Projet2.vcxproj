@@ -130,6 +130,7 @@
     <ClCompile Include="AttributID.cpp" />
     <ClCompile Include="AttributNum.cpp" />
     <ClCompile Include="Lecture.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Maladie.cpp" />
     <ClCompile Include="Patient.cpp" />
     <ClCompile Include="Signature.cpp" />
