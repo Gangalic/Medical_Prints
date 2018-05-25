@@ -74,12 +74,13 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 
 	{
-		if (delta[i] == 0.0)
+		int deltaUnitaire = abs(attMaladie[i]->getValue() - attPatient->getValue());
+		if ((delta[i] == 0.0) || (deltaUnitaire>delta[i]))
 		{
 			proba.push_back(1.0);
 		}
 		else {
-			proba.push_back(abs(attMaladie[i]->getValue() - attPatient->getValue()) / delta[i]);
+			proba.push_back(deltaUnitaire/delta[i]);
 		}
 	}
 
