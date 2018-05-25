@@ -7,7 +7,7 @@ using namespace std;
 
 Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 #ifdef MAP
-	cout << "Appel au constructeur de <Lecture>" << endl;
+     << "Appel au constructeur de <Lecture>" << endl;
 #endif
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
@@ -27,38 +27,46 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 }
 
 
-void Lecture::LireMaladies(vector<Maladie> &tabMaladie)
+vector<Maladie> Lecture::LireMaladies()
 {
-
-	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
+    string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
     ifstream fi;
+
     fi.open(nomFichierMal);
     getline(fi, contenu);
-    while(fi.good())
-	{
-        cout << contenu<<endl;
-            getline(fi, contenu);
-             cout << contenu<<endl;
-			tabMaladie.push_back(LireUneMaladie(contenu));
-	}
-    fi.close();
+
+    vector<Maladie> tabMaladies;
+    while(contenu != "")
+    {
+
+        getline(fi, contenu);
+        if(contenu != "")
+        {
+            tabMaladies.push_back(LireUneMaladie(contenu));
+         }
+
+    }
+     return tabMaladies;
 }
 
-void Lecture::LireSignatures(vector<Signature> &tabSignature)
+vector<Patient> Lecture::LirePatients()
 {
     string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
     ifstream fi;
     fi.open(nomFichierPat);
     getline(fi, contenu);
-
-    while(fi.good())
+    vector<Patient> tabPatients;
+    while(contenu != "")
     {
 
         getline(fi, contenu);
-        tabSignature.push_back(LireUneSignature(contenu));
-        cout << "Apres"<<endl;
-	}
-    fi.close();
+        if(contenu != "")
+        {
+            tabPatients.push_back(Patient(LireUneSignature(contenu)));
+        }
+
+    }
+     return tabPatients;
 }
 
 Signature Lecture::LireUneSignature(string line)
@@ -85,7 +93,7 @@ Signature Lecture::LireUneSignature(string line)
             attr = new AttributCarac(info,metadonnees[i].substr(0,metadonnees[i].find(';')));
 		}
 		else
-		{
+        {
             attr = NULL;
 		}
 
@@ -93,7 +101,7 @@ Signature Lecture::LireUneSignature(string line)
 
 		i++;
 	}
-    cout << "rendu signature"<<endl;
+
 	
 	return laSignature;
 
@@ -101,9 +109,12 @@ Signature Lecture::LireUneSignature(string line)
 
 Maladie Lecture::LireUneMaladie(string line)
 {
-
-    Signature laSignature = LireUneSignature(line.substr(0,line.find_last_of(';')-1));
+    cout <<line.find_last_of(';')<<endl;
+    cout << line.substr(0,line.find_last_of(';')-1)<<endl;
+    string laS = line.substr(0,line.find_last_of(';')-1);
+    Signature laSignature = LireUneSignature(laS);
 	string nom = line.substr(line.find_last_of(';')+1, line.length());
+
 	Maladie laMaladie = Maladie(nom, laSignature);
 	return laMaladie;
 }

@@ -9,7 +9,6 @@
 #include "Patient.h"
 #include <fstream>
 #include <iostream>
-#include <sstream>
 using namespace std;
 class Lecture
 {
@@ -17,8 +16,8 @@ public:
 	Lecture(string fichierMeta, string fichierMal, string fichierPat);
     Maladie LireUneMaladie(string ligne );
     Signature LireUneSignature(string ligne);
-    void LireSignatures(vector<Signature> &tabSignature);
-	void LireMaladies(vector<Maladie> &tabMaladie);
+    vector<Patient> LirePatients();
+    vector<Maladie>  LireMaladies();
 	~Lecture();
 
 protected:
