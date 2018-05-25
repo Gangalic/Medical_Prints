@@ -11,6 +11,7 @@ using namespace std;
 
 int main()
 {
+	/*
 	string nomFichierMeta = "";
 	string nomFichierMaladie="";
 	string nomFichierPatient = "";
@@ -20,7 +21,7 @@ int main()
 	{
 		cin >> nomFichierMeta;
 		if (nomFichierMeta.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez reessayer " << endl;
 		}
 	}
 
@@ -57,11 +58,11 @@ int main()
 			cout << "Que voulez-vous faire ?" << endl;
 			cout << "Tapez le numéro corresondant à votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
-			cout << "2. Afficher les patients avec leur risque d'être atteint par chaque maladie" << endl;
+			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
 			cin >> choix;
 			if (choix != "1" || choix != "2" || choix != "3") {
-				cout << "Choix invalide, veuillez réessayer" << endl;
+				cout << "Choix invalide, veuillez reessayer" << endl;
 			}
 		}
 
@@ -89,6 +90,11 @@ int main()
 		
 	return 0;
 	
+	vector <Signature> tabS;
+	Lecture l("/home/alan/Bureau/fichierTPGL/meta.txt", "/home/alan/Bureau/fichierTPGL/mal.txt", "/home/alan/Bureau/fichierTPGL/p.txt");
+	l.LireSignatures(tabS);*/
+	return 0;
+
 }
 
 

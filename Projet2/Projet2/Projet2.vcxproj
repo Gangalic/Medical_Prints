@@ -104,8 +104,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <AdditionalOptions>/Qstd:c++14 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <EnableModules>
+      </EnableModules>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -122,6 +125,7 @@
     <ClInclude Include="Maladie.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="Signature.h" />
+    <ClInclude Include="testLecture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Analyse.cpp" />

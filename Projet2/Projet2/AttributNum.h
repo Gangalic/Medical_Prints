@@ -6,6 +6,7 @@ class AttributNum : public Attribut {
 
 public:
 
+	AttributNum();
 	AttributNum(string valInput, string name);
 	auto getValue();
 	~AttributNum();

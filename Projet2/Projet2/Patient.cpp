@@ -4,20 +4,23 @@ using namespace std;
 
 Patient::Patient(Signature laSignature)
 {
+#ifdef MAP
+	cout << "Appel au constructeur de <Patient>" << endl;
+#endif
+	uneSignature = laSignature;
 }
 
 void Patient::AffichagePatient() {
-<<<<<<< HEAD
     cout << "\n";
-    //cout << "Patient avec id " << uneSignature.getIdSignature() <<" a les maladies suivants:\n";
-
-=======
 	cout << "\n";
 	cout << "Patient avec id " << uneSignature.getIdSignature() <<" a les maladies suivants:\n";
-	for (multimap<string, double>::iterator it = risqueMaladie.begin(); it != risqueMaladie.end(); ++it) {
-		cout << (*it).first << " " << (*it).second <<"\n";
+	for (multimap<string, double>::iterator it = risqueMaladies.begin(); it != risqueMaladies.end(); ++it) {
+		cout << (*it).first << " " << (*it).second << "\n";
 	}
->>>>>>> 483c775da1338cf6af1b3e12182e48e2adf226e2
+}
+
+void Patient::ajouterRisqueMaladie(pair<string,double> risqueUneMaladie) {
+	risqueMaladies.insert(risqueUneMaladie);
 }
 
 Signature Patient::getSignature() {
@@ -26,4 +29,7 @@ Signature Patient::getSignature() {
 
 Patient::~Patient()
 {
+#ifdef MAP
+	cout << "Appel au destructeur de <Patient>" << endl;
+#endif
 }
