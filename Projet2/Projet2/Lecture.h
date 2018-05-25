@@ -3,6 +3,9 @@
 #include "Maladie.h"
 #include "Signature.h"
 #include "Attribut.h"
+#include "AttributID.h"
+#include "AttributCarac.h"
+#include "AttributNum.h"
 #include "Patient.h"
 #include <fstream>
 #include <iostream>
@@ -12,8 +15,8 @@ class Lecture
 public:
 	Lecture(string fichierMeta, string fichierMal, string fichierPat);
     Maladie LireUneMaladie(string ligne );
-    Patient LireUnPatient(string ligne);
-	void LirePatients(vector<Patient> &tabPatient);
+    Signature LireUneSignature(string ligne);
+    void LireSignatures(vector<Signature> &tabSignature);
 	void LireMaladies(vector<Maladie> &tabMaladie);
 	~Lecture();
 
