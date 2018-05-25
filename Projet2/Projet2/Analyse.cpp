@@ -48,7 +48,7 @@ Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 			sommeRisques += tabTousAttributs[j][i];
 		}
 		double risque = 1 - sommeRisques / nbAttributsNonId;
-		pair<string, double> risqueUneMaladie = make_pair(maladies[i].getNom, risque);
+		pair<string, double> risqueUneMaladie = make_pair((string)maladies[i].getNom, risque);
 		patient.ajouterRisqueMaladie(risqueUneMaladie);
 	}
 	return patient;

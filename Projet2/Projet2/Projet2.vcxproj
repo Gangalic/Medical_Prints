@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <AdditionalOptions>/Qstd:c++14 %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <EnableModules>
       </EnableModules>
     </ClCompile>
