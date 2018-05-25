@@ -14,8 +14,8 @@ int main()
 	string nomFichierMeta = "";
 	string nomFichierMaladie="";
 	string nomFichierPatient = "";
-	cout << "Bonjour, j'espère que vous passer une bonne journée." << endl;
-	cout << "Quelle est le nom du fichier de métadonnée que vous voulez analyser ? " << endl;
+	cout << "Bonjour, j'espe que vous passer une bonne journ." << endl;
+	cout << "Quelle est le nom du fichier de madonn que vous voulez analyser ? " << endl;
 	while (!nomFichierMeta.find(".csv"))
 	{
 		cin >> nomFichierMeta;
@@ -29,7 +29,7 @@ int main()
 	{
 	cin >> nomFichierMaladie;
 		if (nomFichierMaladie.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez rssayer " << endl;
 		}
 	}
 	cout << "Quelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
@@ -37,7 +37,7 @@ int main()
 	{
 		cin >> nomFichierPatient;
 		if (nomFichierPatient.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez rssayer " << endl;
 		}
 	}
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
@@ -55,7 +55,7 @@ int main()
 	while (!close) {
 		while ((choix != "1") || (choix != "2") || (choix != "3")) {
 			cout << "Que voulez-vous faire ?" << endl;
-			cout << "Tapez le numéro corresondant à votre demmande." << endl;
+			cout << "Tapez le numéro corresondant ?votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'être atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
@@ -79,7 +79,7 @@ int main()
 			close = true;
 		}
 	}
-	cout << "Bonne journée à vous et a bientôt ;)" << endl;
+	cout << "Bonne journ ?vous et a bient ;)" << endl;
 
 
 	
