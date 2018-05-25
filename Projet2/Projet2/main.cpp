@@ -15,8 +15,8 @@ int main()
 	string nomFichierMeta = "";
 	string nomFichierMaladie="";
 	string nomFichierPatient = "";
-	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
-	cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
+	cout << "Bonjour, j'espère que vous passer une bonne journée." << endl;
+	cout << "Quelle est le nom du fichier de métadonnée que vous voulez analyser ? " << endl;
 	while (!nomFichierMeta.find(".csv"))
 	{
 		cin >> nomFichierMeta;
@@ -30,7 +30,7 @@ int main()
 	{
 	cin >> nomFichierMaladie;
 		if (nomFichierMaladie.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez reessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
 		}
 	}
 	cout << "Quelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
@@ -38,7 +38,7 @@ int main()
 	{
 		cin >> nomFichierPatient;
 		if (nomFichierPatient.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez reessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
 		}
 	}
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
@@ -56,7 +56,7 @@ int main()
 	while (!close) {
 		while ((choix != "1") || (choix != "2") || (choix != "3")) {
 			cout << "Que voulez-vous faire ?" << endl;
-			cout << "Tapez le numero corresondant a votre demmande." << endl;
+			cout << "Tapez le numéro corresondant à votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
@@ -80,7 +80,7 @@ int main()
 			close = true;
 		}
 	}
-	cout << "Bonne journee à vous et a bientot ;)" << endl;
+	cout << "Bonne journée à vous et a bientôt ;)" << endl;
 
 
 	
@@ -89,7 +89,12 @@ int main()
 		
 		
 	return 0;
-	*/
+	
+	vector <Signature> tabS;
+	Lecture l("/home/alan/Bureau/fichierTPGL/meta.txt", "/home/alan/Bureau/fichierTPGL/mal.txt", "/home/alan/Bureau/fichierTPGL/p.txt");
+	l.LireSignatures(tabS);*/
+	return 0;
+
 }
 
 
