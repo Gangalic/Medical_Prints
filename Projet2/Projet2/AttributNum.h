@@ -8,7 +8,7 @@ public:
 
 	AttributNum();
 	AttributNum(string valInput, string name);
-	auto getValue();
+	void* getValue();
 	~AttributNum();
 
 protected:

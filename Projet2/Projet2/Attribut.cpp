@@ -5,7 +5,9 @@ using namespace std;
 Attribut::Attribut(){
 }
 
-auto Attribut::getValue(){}
+void* Attribut::getValue() {
+	return nullptr;
+}
 
 Attribut::~Attribut(){
 }

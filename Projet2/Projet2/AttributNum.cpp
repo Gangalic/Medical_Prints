@@ -16,8 +16,8 @@ AttributNum::AttributNum(string valInput, string name) {
 	nom = name;
 }
 
-auto AttributNum::getValue() {
-	return valeur;
+void* AttributNum::getValue() {
+	return &valeur;
 }
 
 AttributNum::~AttributNum() {

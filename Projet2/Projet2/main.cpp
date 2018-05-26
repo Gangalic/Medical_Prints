@@ -11,41 +11,40 @@ using namespace std;
 
 int main()
 {
-	/*
-	string nomFichierMeta = "";
-	string nomFichierMaladie="";
-	string nomFichierPatient = "";
-	cout << "Bonjour, j'espère que vous passer une bonne journée." << endl;
-	cout << "Quelle est le nom du fichier de métadonnée que vous voulez analyser ? " << endl;
-	while (!nomFichierMeta.find(".csv"))
-	{
+	
+	string nomFichierMeta;
+	string nomFichierMaladie;
+	string nomFichierPatient;
+	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
+	cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
+	do {
 		cin >> nomFichierMeta;
-		if (nomFichierMeta.find(".csv")) {
+		if (!nomFichierMeta.find(".csv")) {
 			cout << "Nom du fichier incorrecte veuillez reessayer " << endl;
 		}
-	}
+	} while (!nomFichierMeta.find(".csv"));
 
 	cout << "Quelle est le nom du fichier Maladie que vous voulez analyser ? " << endl;
-	while (!nomFichierMaladie.find(".csv"))
-	{
-	cin >> nomFichierMaladie;
-		if (nomFichierMaladie.find(".csv")) {
+	
+	do {
+		cin >> nomFichierMaladie;
+		if (!nomFichierMaladie.find(".csv")) {
 			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
 		}
-	}
+	} while (!nomFichierMaladie.find(".csv"));
+
 	cout << "Quelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
-	while (!nomFichierPatient.find(".csv"))
-	{
+	do {
 		cin >> nomFichierPatient;
-		if (nomFichierPatient.find(".csv")) {
+		if (!nomFichierPatient.find(".csv")) {
 			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
 		}
-	}
+	} while (!nomFichierPatient.find(".csv"));
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
 
 	string choix = "";
-	vector <Maladie> tabMaladie = lect.LireMaladie();
-	vector <Patient> tabPatient = lect.LirePatient();
+	vector <Maladie> tabMaladie = lect.LireMaladies();
+	vector <Patient> tabPatient = lect.LirePatients();
 	vector <Patient> tabPatientFinal;
 	Analyse analyse = Analyse();
 	bool close = false;
@@ -54,18 +53,18 @@ int main()
 	}
 
 	while (!close) {
-		while ((choix != "1") || (choix != "2") || (choix != "3")) {
+		while ((choix != "1") && (choix != "2") && (choix != "3")) {
 			cout << "Que voulez-vous faire ?" << endl;
-			cout << "Tapez le numéro corresondant à votre demmande." << endl;
+			cout << "Tapez le numero corresondant à votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
 			cin >> choix;
-			if (choix != "1" || choix != "2" || choix != "3") {
+			if (choix != "1" && choix != "2" && choix != "3") {
 				cout << "Choix invalide, veuillez reessayer" << endl;
 			}
 		}
-
+		cout << "ligne 67  " << choix;
 		if (choix == "1") {
 			for (int j = 0; j < tabMaladie.size(); j++) {
 				tabMaladie[j].AffichageMaladie();
@@ -79,20 +78,11 @@ int main()
 		if (choix == "3") {
 			close = true;
 		}
+		choix = "";
 	}
 	cout << "Bonne journée à vous et a bientôt ;)" << endl;
 
 
-	
-		
-	
-		
-		
-	return 0;
-	
-	vector <Signature> tabS;
-	Lecture l("/home/alan/Bureau/fichierTPGL/meta.txt", "/home/alan/Bureau/fichierTPGL/mal.txt", "/home/alan/Bureau/fichierTPGL/p.txt");
-	l.LireSignatures(tabS);*/
 	return 0;
 
 }

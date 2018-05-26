@@ -8,7 +8,7 @@ public:
 
 	AttributCarac();
 	AttributCarac(string valInput, string name);
-	auto getValue();
+	void* getValue();
 	~AttributCarac();
 
 protected:

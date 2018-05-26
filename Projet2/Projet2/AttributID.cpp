@@ -10,8 +10,8 @@ AttributID::AttributID(string valInput, string name) {
 	nom = name;
 }
 
-auto AttributID::getValue() {
-	return valeur;
+void* AttributID::getValue() {
+	return &valeur;
 }
 
 AttributID::~AttributID() {

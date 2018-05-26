@@ -42,13 +42,13 @@ Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 	//calculating the average probability of having each illness
 	//and adding each detail to risqueMaladie attribute of Patient
 	for (int i = 0; i < tabTousAttributs[0].size(); i++) {
-		int nbAttributsNonId = tabTousAttributs.size();
+		int nbAttributsNonId = (int) tabTousAttributs.size();
 		double sommeRisques = 0;
 		for (int j = 0; j < nbAttributsNonId; j++) {
 			sommeRisques += tabTousAttributs[j][i];
 		}
 		double risque = 1 - sommeRisques / nbAttributsNonId;
-		pair<string, double> risqueUneMaladie = make_pair((string)maladies[i].getNom, risque);
+		pair<string, double> risqueUneMaladie = make_pair((string)maladies[i].getNom(), risque);
 		patient.ajouterRisqueMaladie(risqueUneMaladie);
 	}
 	return patient;
@@ -62,13 +62,14 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 	double max = 100000.0;
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 	{
-		if ((double)attMaladie[i]->getValue() < min)
+		double* a = (double*)attMaladie[i]->getValue();
+		if (*a < min)
 		{
-			min = attMaladie[i]->getValue();
+			min = *a;
 		}
-		if ((double)attMaladie[i]->getValue() > max)
+		if (*a > max)
 		{
-			max = attMaladie[i]->getValue();
+			max = *a;
 		}
 		delta.push_back(max - min);
 	}
@@ -76,7 +77,9 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 
 	{
-		double deltaUnitaire = abs(attMaladie[i]->getValue() - attPatient->getValue());
+		double* a = (double*)(attMaladie[i]->getValue());
+		double* b = (double*)(attPatient->getValue());
+		double deltaUnitaire = abs(*a - *b);
 		if ((delta[i] == 0.0) || (deltaUnitaire>delta[i]))
 		{
 			proba.push_back(1.0);
@@ -94,7 +97,9 @@ vector<double> Analyse::risqueCategorique(Attribut* attPatient, vector<Attribut*
 	vector<double> proba;
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 	{
-		if ((string)attMaladie[i]->getValue() == attPatient->getValue()) {
+		string* a = (string*)attMaladie[i]->getValue();
+		string* b = (string*)attPatient->getValue();
+		if (*a == *b) {
 			proba.push_back(0.0);
 		}
 		else {

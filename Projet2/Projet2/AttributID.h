@@ -7,7 +7,7 @@ class AttributID : public Attribut {
 public:
 
 	AttributID(string valInput, string name);
-	auto getValue();
+	void* getValue();
 	~AttributID();
 
 protected:

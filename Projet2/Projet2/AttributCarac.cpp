@@ -16,8 +16,8 @@ AttributCarac::AttributCarac(string valInput, string name) {
 	nom = name;
 }
 
-auto AttributCarac::getValue() {
-	return valeur;
+void* AttributCarac::getValue() {
+	return &valeur;
 }
 
 AttributCarac::~AttributCarac() {
