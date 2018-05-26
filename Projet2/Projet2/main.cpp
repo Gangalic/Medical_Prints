@@ -50,6 +50,8 @@ int main()
 	bool close = false;
 	for (int i = 0; i < tabPatient.size(); i++) {
 		tabPatientFinal[i] = analyse.FaireAnalyse(tabPatient[i], tabMaladie);
+		tabPatient[i].AffichagePatient();
+		cout << "ooii";
 	}
 
 	while (!close) {
