@@ -1,7 +1,22 @@
+/*************************************************************************
+                           main  -  description
+                             -------------------
+    d√©but                : 28/05/2018
+    copyright            : (C) 2018 par B3350 & B33
+    e-mail               : 3if@insa-lyon.fr
+*************************************************************************/
+
+//---------- R√©alisation de la classe <main> (fichier main.cpp) ------------
+
+//---------------------------------------------------------------- INCLUDE
+
+//-------------------------------------------------------- Include syst√®me
 using namespace std;
 #include <iostream>
 #include <string>
 #include <map>
+
+
 #include "Maladie.h"
 #include "Patient.h"
 #include "Lecture.h"
@@ -29,7 +44,7 @@ int main()
 	do {
 		cin >> nomFichierMaladie;
 		if (!nomFichierMaladie.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez rÈessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez r√©essayer " << endl;
 		}
 	} while (!nomFichierMaladie.find(".csv"));
 
@@ -37,7 +52,7 @@ int main()
 	do {
 		cin >> nomFichierPatient;
 		if (!nomFichierPatient.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez rÈessayer " << endl;
+			cout << "Nom du fichier incorrecte veuillez r√©essayer " << endl;
 		}
 	} while (!nomFichierPatient.find(".csv"));
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
@@ -57,7 +72,7 @@ int main()
 	while (!close) {
 		while ((choix != "1") && (choix != "2") && (choix != "3")) {
 			cout << "Que voulez-vous faire ?" << endl;
-			cout << "Tapez le numero corresondant ‡ votre demmande." << endl;
+			cout << "Tapez le numero corresondant √† votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
@@ -82,7 +97,7 @@ int main()
 		}
 		choix = "";
 	}
-	cout << "Bonne journÈe ‡ vous et a bientÙt ;)" << endl;
+	cout << "Bonne journ√©e √† vous et a bient√¥t ;)" << endl;
 
 
 	return 0;
