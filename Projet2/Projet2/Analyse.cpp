@@ -60,6 +60,7 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 	vector<double> delta;
 	double min = -100000.0;
 	double max = 100000.0;
+	// finding the ranges of an attribute
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 	{
 		double* a = (double*)attMaladie[i]->getValue();
@@ -73,9 +74,9 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 		}
 		delta.push_back(max - min);
 	}
-
+	
+	// calculating the probabilty of them being equal
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
-
 	{
 		double* a = (double*)(attMaladie[i]->getValue());
 		double* b = (double*)(attPatient->getValue());
