@@ -81,6 +81,7 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 		double* b = (double*)(attPatient->getValue());
 		double deltaUnitaire = abs(*a - *b);
 		// checking if prob is between 0 and 1
+		// and we don't have division by 0
 		if ((delta[i] == 0.0) || (deltaUnitaire>delta[i]))
 		{
 			proba.push_back(1.0);
