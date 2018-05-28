@@ -70,8 +70,8 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 {
 	vector<double> proba;
 	vector<double> delta;
-	double min = -100000.0;
-	double max = 100000.0;
+	double min = 100000.0;
+	double max = -100000.0;
 	// finding the ranges of an attribute
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 	{
@@ -90,17 +90,21 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 	// calculating the probabilty of them being equal
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
 	{
-		double* a = (double*)(attMaladie[i]->getValue());
-		double* b = (double*)(attPatient->getValue());
-		double deltaUnitaire = abs(*a - *b);
+		double* valMaladie = (double*)(attMaladie[i]->getValue());
+		double* valPatient = (double*)(attPatient->getValue());
+		double deltaUnitaire = abs(*valPatient - *valMaladie);
+		double uneProba = abs(deltaUnitaire / delta[i]);
 		// checking if prob is between 0 and 1
 		// and we don't have division by 0
-		if ((delta[i] == 0.0) || (deltaUnitaire>delta[i]))
+		if (delta[i] == 0.0)
 		{
+			uneProba = (*valPatient)/(*valMaladie);
+		}
+		if (uneProba > 1) {
 			proba.push_back(1.0);
 		}
 		else {
-			proba.push_back(abs(deltaUnitaire/ delta[i]));
+			proba.push_back(uneProba);
 		}
 	}
 
