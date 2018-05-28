@@ -110,7 +110,7 @@ Signature Lecture::LireUneSignature(string line)
 Maladie Lecture::LireUneMaladie(string line)
 {
 
-	string laS = line.substr(0, line.find_last_of(';') - 1);
+	string laS = line.substr(0, line.find_last_of(';'));
 	Signature laSignature = LireUneSignature(laS);
 	string nom = line.substr(line.find_last_of(';') + 1, line.length());
 
