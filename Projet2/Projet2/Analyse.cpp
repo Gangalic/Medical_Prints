@@ -3,6 +3,7 @@ using namespace std;
 #include <string>
 #include <cmath>
 #include <utility>
+#include <iostream> //to delete
 #include "Analyse.h"
 
 
@@ -17,19 +18,28 @@ Analyse::Analyse()
 //sending back a patient
 Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 {
-	Patient patient = Patient(unPatient.getSignature());
+	Patient * patient = new Patient(unPatient.getSignature());
 	vector<vector<double>> tabTousAttributs;
 	//creation of two attributs to check for type of our pointer
 	AttributCarac tempCarac = AttributCarac();
 	AttributNum tempNum = AttributNum();
 	//going through all the attributes of an illness
-	for (int i = 0; i < maladies[0].getSignature().getTabAttributs().size(); i++) {
+	Maladie uneMaladie = maladies[0];
+	Signature uneSignatureDeMaladie = uneMaladie.getSignature();
+	vector <Attribut *> unTabAttributDeMaladie = uneSignatureDeMaladie.getTabAttributs();
+	vector <Attribut *> unTabAttributDeCertaineMaladie;
+	for (int i = 0; i < unTabAttributDeMaladie.size(); i++) {
 		vector<Attribut *> unAttributChaqueMaladie;
 		//getting out i-th attribute of each illness and adding it to a vector
 		for (int j = 0; j < maladies.size(); j++) {
-			unAttributChaqueMaladie.push_back(maladies[j].getSignature().getTabAttributs()[i]);
+			uneMaladie = maladies[j];
+			uneSignatureDeMaladie = uneMaladie.getSignature();
+			unTabAttributDeCertaineMaladie = uneSignatureDeMaladie.getTabAttributs();
+			unAttributChaqueMaladie.push_back(unTabAttributDeCertaineMaladie[i]);
 		}
-		Attribut * unAttributPatient = unPatient.getSignature().getTabAttributs()[i];
+		Signature uneSignaturePatient = unPatient.getSignature();
+		vector <Attribut *> unTabAttributDePatient = uneSignaturePatient.getTabAttributs();
+		Attribut * unAttributPatient = unTabAttributDePatient[i];
 		//send i-th attribute of Patient and all illnesses to be able to calculate 
 		//individual probabilities of NOT having a certain illness
 		if (typeid(*unAttributPatient) == typeid(tempNum)) {
@@ -41,17 +51,19 @@ Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 	}
 	//calculating the average probability of having each illness
 	//and adding each detail to risqueMaladie attribute of Patient
-	for (int i = 0; i < tabTousAttributs[0].size(); i++) {
+	vector<double> attributsUnPatient = tabTousAttributs[0];
+	for (int i = 0; i < attributsUnPatient.size(); i++) {
 		int nbAttributsNonId = (int) tabTousAttributs.size();
 		double sommeRisques = 0;
 		for (int j = 0; j < nbAttributsNonId; j++) {
 			sommeRisques += tabTousAttributs[j][i];
 		}
-		double risque = 1 - sommeRisques / nbAttributsNonId;
-		pair<string, double> risqueUneMaladie = make_pair((string)maladies[i].getNom(), risque);
-		patient.ajouterRisqueMaladie(risqueUneMaladie);
+		double risque = 1 - (sommeRisques / nbAttributsNonId);
+		uneMaladie = maladies[i];
+		pair<string, double> risqueUneMaladie = make_pair((string)uneMaladie.getNom(), risque);
+		patient->ajouterRisqueMaladie(risqueUneMaladie);
 	}
-	return patient;
+	return *patient;
 }
 
 vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> attMaladie)

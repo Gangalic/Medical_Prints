@@ -71,7 +71,7 @@ vector<Patient> Lecture::LirePatients()
 
 Signature Lecture::LireUneSignature(string line)
 {
-	Signature laSignature;
+	Signature* pLaSignature = new Signature();
 	stringstream ss;
 	ss.str(line);
 	string info;
@@ -97,20 +97,21 @@ Signature Lecture::LireUneSignature(string line)
 			attr = NULL;
 		}
 
-		laSignature.AjouterAttribut(attr);
+		pLaSignature->AjouterAttribut(attr);
+
 
 		i++;
 	}
 
 
-	return laSignature;
+	return *pLaSignature;
 
 }
 
 Maladie Lecture::LireUneMaladie(string line)
 {
 
-	string laS = line.substr(0, line.find_last_of(';') - 1);
+	string laS = line.substr(0, line.find_last_of(';'));
 	Signature laSignature = LireUneSignature(laS);
 	string nom = line.substr(line.find_last_of(';') + 1, line.length());
 

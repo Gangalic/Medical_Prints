@@ -30,8 +30,8 @@ int main()
 	string nomFichierMeta;
 	string nomFichierMaladie;
 	string nomFichierPatient;
-	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
-	/*cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
+	/*cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
+	cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
 	cin >> nomFichierMeta;
 	cout << "Vous avez choisi le fichier : " << nomFichierMeta << endl;
 
@@ -44,9 +44,9 @@ int main()
 	cin >> nomFichierPatient;
 	cout << "Vous avez choisi le fichier : " << nomFichierPatient << endl;*/
 	
-	nomFichierMeta = "C:\\Users\\user\\Downloads\\meta.txt";
-	nomFichierMaladie = "C:\\Users\\user\\Downloads\\mal.txt";
-	nomFichierPatient = "C:\\Users\\user\\Downloads\\p.txt";
+	nomFichierMeta = "C:\\GL\\meta.txt";
+	nomFichierMaladie = "C:\\GL\\mal.txt";
+	nomFichierPatient = "C:\\GL\\p.txt";
 	cout << "Vous avez choisi le fichier meta : " << nomFichierMeta << endl;
 	cout << "Vous avez choisi le fichier Maladie : " << nomFichierMaladie << endl;
 	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << endl;
@@ -62,8 +62,10 @@ int main()
 	bool close = false;
 	for (int i = 0; i < tabPatient.size(); i++) {
 		cout << "analyse" << endl;
-		tabPatient[i].AffichagePatient();
-		tabPatientFinal[i] = analyse.FaireAnalyse(tabPatient[i], tabMaladie);
+		Patient unPatient = tabPatient[i];
+		unPatient.AffichagePatient();
+		tabPatientFinal.push_back(analyse.FaireAnalyse(tabPatient[i], tabMaladie));
+
 	}
 
 	while (!close) {
