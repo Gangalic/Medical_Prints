@@ -6,7 +6,7 @@ class Attribut
 {
 public:
 	Attribut();
-	auto getValue();
+	void* getValue();
 	~Attribut();
 protected:
 	string nom;

@@ -2,6 +2,12 @@ using namespace std;
 #include <string>
 #include "AttributNum.h"
 
+AttributNum::AttributNum() {
+#ifdef MAP
+	cout << "Appel au constructeur par defaut de <AttributNum>" << endl;
+#endif
+}
+
 AttributNum::AttributNum(string valInput, string name) {
 #ifdef MAP
 	cout << "Appel au constructeur de <AttributNum>" << endl;
@@ -10,8 +16,8 @@ AttributNum::AttributNum(string valInput, string name) {
 	nom = name;
 }
 
-auto AttributNum::getValue() {
-	return valeur;
+void* AttributNum::getValue() {
+	return &valeur;
 }
 
 AttributNum::~AttributNum() {

@@ -2,6 +2,12 @@ using namespace std;
 #include <string>
 #include "AttributCarac.h"
 
+AttributCarac::AttributCarac() {
+#ifdef MAP
+	cout << "Appel au constructeur par defaut de <AttributCarac>" << endl;
+#endif
+}
+
 AttributCarac::AttributCarac(string valInput, string name) {
 #ifdef MAP
 	cout << "Appel au constructeur de <AttributCarac>" << endl;
@@ -10,8 +16,8 @@ AttributCarac::AttributCarac(string valInput, string name) {
 	nom = name;
 }
 
-auto AttributCarac::getValue() {
-	return valeur;
+void* AttributCarac::getValue() {
+	return &valeur;
 }
 
 AttributCarac::~AttributCarac() {

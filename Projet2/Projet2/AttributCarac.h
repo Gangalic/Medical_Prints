@@ -6,8 +6,9 @@ class AttributCarac : public Attribut {
 
 public:
 
+	AttributCarac();
 	AttributCarac(string valInput, string name);
-	auto getValue();
+	void* getValue();
 	~AttributCarac();
 
 protected:
