@@ -80,7 +80,7 @@ int main()
 			close = true;
 		}
 	}
-	cout << "Bonne journee à vous et a bientot ;)" << endl;
+	cout << "Bonne journee ?vous et a bientot ;)" << endl;
 
 
 	
