@@ -7,7 +7,7 @@ class AttributID : public Attribut {
 public:
 
 	AttributID(string valInput, string name);
-	void* getValue();
+	virtual void* getValue(); //random
 	~AttributID();
 
 protected:

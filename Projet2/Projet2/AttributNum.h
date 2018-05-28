@@ -8,7 +8,7 @@ public:
 
 	AttributNum();
 	AttributNum(string valInput, string name);
-	void* getValue();
+	virtual void* getValue(); //random
 	~AttributNum();
 
 protected:
