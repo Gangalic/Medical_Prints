@@ -84,8 +84,8 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 		{
 			max = *a;
 		}
-		delta.push_back(max - min);
 	}
+	delta.push_back(max - min);
 	
 	// calculating the probabilty of them being equal
 	for (unsigned int i = 0; i < attMaladie.size(); i++)
@@ -93,13 +93,17 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 		double* valMaladie = (double*)(attMaladie[i]->getValue());
 		double* valPatient = (double*)(attPatient->getValue());
 		double deltaUnitaire = abs(*valPatient - *valMaladie);
-		double uneProba = abs(deltaUnitaire / delta[i]);
+		double uneProba=1.0;
 		// checking if prob is between 0 and 1
 		// and we don't have division by 0
-		if (delta[i] == 0.0)
-		{
+		if (delta[i] == 0.0) 
+		{ //fucks up here
 			uneProba = (*valPatient)/(*valMaladie);
 		}
+		else {
+			uneProba = abs(deltaUnitaire / delta[i]);
+		}
+
 		if (uneProba > 1) {
 			proba.push_back(1.0);
 		}
