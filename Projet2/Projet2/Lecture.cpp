@@ -109,8 +109,7 @@ Signature Lecture::LireUneSignature(string line)
 
 Maladie Lecture::LireUneMaladie(string line)
 {
-	cout << line.find_last_of(';') << endl;
-	cout << line.substr(0, line.find_last_of(';') - 1) << endl;
+
 	string laS = line.substr(0, line.find_last_of(';') - 1);
 	Signature laSignature = LireUneSignature(laS);
 	string nom = line.substr(line.find_last_of(';') + 1, line.length());

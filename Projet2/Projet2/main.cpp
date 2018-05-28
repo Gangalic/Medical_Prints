@@ -31,42 +31,39 @@ int main()
 	string nomFichierMaladie;
 	string nomFichierPatient;
 	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
-	cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
-	do {
-		cin >> nomFichierMeta;
-		if (!nomFichierMeta.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez reessayer " << endl;
-		}
-	} while (!nomFichierMeta.find(".csv"));
+	/*cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
+	cin >> nomFichierMeta;
+	cout << "Vous avez choisi le fichier : " << nomFichierMeta << endl;
 
 	cout << "Quelle est le nom du fichier Maladie que vous voulez analyser ? " << endl;
-	
-	do {
-		cin >> nomFichierMaladie;
-		if (!nomFichierMaladie.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
-		}
-	} while (!nomFichierMaladie.find(".csv"));
+	cin >> nomFichierMaladie;
+	cout << "Vous avez choisi le fichier : " << nomFichierMaladie << endl;
 
 	cout << "Quelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
-	do {
-		cin >> nomFichierPatient;
-		if (!nomFichierPatient.find(".csv")) {
-			cout << "Nom du fichier incorrecte veuillez réessayer " << endl;
-		}
-	} while (!nomFichierPatient.find(".csv"));
+
+	cin >> nomFichierPatient;
+	cout << "Vous avez choisi le fichier : " << nomFichierPatient << endl;*/
+	
+	nomFichierMeta = "C:\\Users\\user\\Downloads\\meta.txt";
+	nomFichierMaladie = "C:\\Users\\user\\Downloads\\mal.txt";
+	nomFichierPatient = "C:\\Users\\user\\Downloads\\p.txt";
+	cout << "Vous avez choisi le fichier meta : " << nomFichierMeta << endl;
+	cout << "Vous avez choisi le fichier Maladie : " << nomFichierMaladie << endl;
+	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << endl;
+
+
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
 
-	string choix = "";
+	string choix = "0";
 	vector <Maladie> tabMaladie = lect.LireMaladies();
 	vector <Patient> tabPatient = lect.LirePatients();
 	vector <Patient> tabPatientFinal;
 	Analyse analyse = Analyse();
 	bool close = false;
 	for (int i = 0; i < tabPatient.size(); i++) {
-		tabPatientFinal[i] = analyse.FaireAnalyse(tabPatient[i], tabMaladie);
+		cout << "analyse" << endl;
 		tabPatient[i].AffichagePatient();
-		cout << "ooii";
+		tabPatientFinal[i] = analyse.FaireAnalyse(tabPatient[i], tabMaladie);
 	}
 
 	while (!close) {
@@ -81,7 +78,6 @@ int main()
 				cout << "Choix invalide, veuillez reessayer" << endl;
 			}
 		}
-		cout << "ligne 67  " << choix;
 		if (choix == "1") {
 			for (int j = 0; j < tabMaladie.size(); j++) {
 				tabMaladie[j].AffichageMaladie();
