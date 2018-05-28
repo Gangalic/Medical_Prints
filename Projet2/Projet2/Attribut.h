@@ -6,7 +6,7 @@ class Attribut
 {
 public:
 	Attribut();
-	void* getValue();
+	virtual void* getValue(); //random
 	~Attribut();
 protected:
 	string nom;

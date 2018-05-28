@@ -8,7 +8,7 @@ public:
 
 	AttributCarac();
 	AttributCarac(string valInput, string name);
-	void* getValue();
+	virtual void* getValue(); //random
 	~AttributCarac();
 
 protected:

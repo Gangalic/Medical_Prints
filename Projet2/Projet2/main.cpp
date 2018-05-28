@@ -61,23 +61,20 @@ int main()
 	Analyse analyse = Analyse();
 	bool close = false;
 	for (int i = 0; i < tabPatient.size(); i++) {
-		cout << "analyse" << endl;
 		Patient unPatient = tabPatient[i];
-		unPatient.AffichagePatient();
 		tabPatientFinal.push_back(analyse.FaireAnalyse(tabPatient[i], tabMaladie));
-
 	}
 
 	while (!close) {
 		while ((choix != "1") && (choix != "2") && (choix != "3")) {
-			cout << "Que voulez-vous faire ?" << endl;
+			cout << "\n Que voulez-vous faire ?\n";
 			cout << "Tapez le numero corresondant à votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
 			cin >> choix;
 			if (choix != "1" && choix != "2" && choix != "3") {
-				cout << "Choix invalide, veuillez reessayer" << endl;
+				cout << "\n Choix invalide, veuillez reessayer" << endl;
 			}
 		}
 		if (choix == "1") {
