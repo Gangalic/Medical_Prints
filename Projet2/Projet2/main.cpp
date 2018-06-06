@@ -15,6 +15,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <map>
+#include <set>
 
 
 #include "Maladie.h"
@@ -30,7 +31,8 @@ int main()
 	string nomFichierMeta;
 	string nomFichierMaladie;
 	string nomFichierPatient;
-	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
+	
+	/*cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
 	cout << "\nQuelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
 	cin >> nomFichierMeta;
 	cout << "Vous avez choisi le fichier : " << nomFichierMeta << endl;
@@ -41,33 +43,43 @@ int main()
 
 	cout << "\nQuelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
 	cin >> nomFichierPatient;
-	cout << "Vous avez choisi le fichier : " << nomFichierPatient << "\n"<< endl;
+	cout << "Vous avez choisi le fichier : " << nomFichierPatient << "\n"<< endl;*/
 	
-	/*nomFichierMeta = "C:\\GL\\meta.txt";
-	nomFichierMaladie = "C:\\GL\\mal.txt";
-	nomFichierPatient = "C:\\GL\\p.txt";
+	nomFichierMeta = "C:\\GL\\HMD.txt";
+	nomFichierMaladie = "C:\\GL\\HMWL.txt";
+	nomFichierPatient = "C:\\GL\\pp.txt";
 	cout << "Vous avez choisi le fichier meta : " << nomFichierMeta << endl;
 	cout << "Vous avez choisi le fichier Maladie : " << nomFichierMaladie << endl;
-	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << endl;*/
+	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << "\n"<<endl;
 
 
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
-	if (!lect.getLectureReussie()) { // if couldn't find the metadata file
+	if (!lect.getLectureReussie()) { // if can't find the metadata file exits
 		system("pause");
 		return 0;
 	}
+
+	cout << "\nOn prepare tous pour vous...\n\n";
 
 	string choix = "0";
 	vector <Maladie> tabMaladie = lect.LireMaladies();
 	vector <Patient> tabPatient = lect.LirePatients();
 	vector <Patient> tabPatientFinal;
+	set <string> maladiesDistinctes;
 	Analyse analyse = Analyse();
 	bool close = false;
 
-	if (!lect.getLectureReussie()) { // if couldn't find illness or patient files
+	if (!lect.getLectureReussie()) { // if can't find illness or patient files exits
 		system("pause");
 		return 0;
 	}
+
+	for (int j = 0; j < tabMaladie.size(); j++) { // cherhcer les maladies distinctes
+		Maladie uneMaladie = tabMaladie[j];
+		string nomMaladie = uneMaladie.getNom();
+		maladiesDistinctes.insert(nomMaladie);
+	}
+	
 	for (int i = 0; i < tabPatient.size(); i++) {
 		Patient unPatient = tabPatient[i];
 		unPatient = analyse.FaireAnalyse(unPatient, tabMaladie);
@@ -88,9 +100,9 @@ int main()
 		}
 		if (choix == "1") {
 			cout << "\nNous avons les maladies suivants:\n";
-			for (int j = 0; j < tabMaladie.size(); j++) {
-				Maladie uneMaladie = tabMaladie[j];
-				uneMaladie.AffichageMaladie();
+			std::set<string>::iterator it;
+			for (it = maladiesDistinctes.begin(); it != maladiesDistinctes.end(); ++it) {
+				cout <<"- "<< *it <<"\n";
 			}
 		}
 		if (choix == "2") {

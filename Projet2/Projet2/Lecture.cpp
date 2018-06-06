@@ -52,7 +52,7 @@ vector<Maladie> Lecture::LireMaladies()
 		while (contenu != "")
 		{
 
-			getline(fi, contenu);
+		getline(fi, contenu);
 			if (contenu != "")
 			{
 				Maladie uneMaladie = LireUneMaladie(contenu);
