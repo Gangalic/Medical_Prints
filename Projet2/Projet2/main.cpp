@@ -32,7 +32,7 @@ int main()
 	string nomFichierMaladie;
 	string nomFichierPatient;
 	
-	/*cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
+	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
 	cout << "\nQuelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
 	cin >> nomFichierMeta;
 	cout << "Vous avez choisi le fichier : " << nomFichierMeta << endl;
@@ -43,18 +43,11 @@ int main()
 
 	cout << "\nQuelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
 	cin >> nomFichierPatient;
-	cout << "Vous avez choisi le fichier : " << nomFichierPatient << "\n"<< endl;*/
-	
-	nomFichierMeta = "C:\\GL\\HMD.txt";
-	nomFichierMaladie = "C:\\GL\\HMWL.txt";
-	nomFichierPatient = "C:\\GL\\pp.txt";
-	cout << "Vous avez choisi le fichier meta : " << nomFichierMeta << endl;
-	cout << "Vous avez choisi le fichier Maladie : " << nomFichierMaladie << endl;
-	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << "\n"<<endl;
+	cout << "Vous avez choisi le fichier : " << nomFichierPatient << "\n"<< endl;
 
 
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
-	if (!lect.getLectureReussie()) { // if can't find the metadata file exits
+	if (!lect.getLectureReussie()) { // if can't find the metadata file, exits
 		system("pause");
 		return 0;
 	}
@@ -69,12 +62,12 @@ int main()
 	Analyse analyse = Analyse();
 	bool close = false;
 
-	if (!lect.getLectureReussie()) { // if can't find illness or patient files exits
+	if (!lect.getLectureReussie()) { // if can't find illness or patient files, exits
 		system("pause");
 		return 0;
 	}
 
-	for (int j = 0; j < tabMaladie.size(); j++) { // cherhcer les maladies distinctes
+	for (int j = 0; j < tabMaladie.size(); j++) { // search distinct illnesses
 		Maladie uneMaladie = tabMaladie[j];
 		string nomMaladie = uneMaladie.getNom();
 		maladiesDistinctes.insert(nomMaladie);
