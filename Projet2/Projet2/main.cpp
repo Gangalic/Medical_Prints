@@ -59,7 +59,7 @@ int main()
 		return 0;
 	}
 
-	cout << "\nOn prepare tous pour vous...\n\n";
+	cout << "\nAttendez\nOn prepare tous pour vous...\n\n";
 
 	string choix = "0";
 	vector <Maladie> tabMaladie = lect.LireMaladies();
@@ -126,12 +126,12 @@ int main()
 	cout << "\nBonne journee a vous et a bientot ;)" << endl;
 	system("pause"); //to let the user read the goodbye message
 
-	for (int j = 0; j < tabMaladie.size(); j++) { // cherhcer les maladies distinctes
-		Maladie uneMaladie = tabMaladie[j];
+	for (int i = 0; i < tabMaladie.size(); i++) { // get rid of memory leaks
+		Maladie uneMaladie = tabMaladie[i];
 		uneMaladie.destroySignature();
 	}
 
-	for (int i = 0; i < tabPatient.size(); i++) {
+	for (int i = 0; i < tabPatient.size(); i++) { // get rid of memory leaks
 		Patient unPatient = tabPatient[i];
 		unPatient.destroySignature();
 	}

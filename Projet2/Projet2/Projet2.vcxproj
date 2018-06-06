@@ -124,7 +124,6 @@
     <ClInclude Include="Maladie.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="Signature.h" />
-    <ClInclude Include="testLecture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Analyse.cpp" />
