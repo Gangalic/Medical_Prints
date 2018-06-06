@@ -10,6 +10,7 @@ public:
 	void AffichageMaladie();
 	string getNom();
 	Signature getSignature();
+	void destroySignature();
 	~Maladie();
 
 private:

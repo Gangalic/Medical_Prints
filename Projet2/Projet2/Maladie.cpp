@@ -24,6 +24,10 @@ Signature Maladie::getSignature() {
 	return uneSignature;
 }
 
+void Maladie::destroySignature() {
+	uneSignature.destroyS();
+}
+
 Maladie::~Maladie()
 {
 }

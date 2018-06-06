@@ -87,7 +87,7 @@ int main()
 	}
 
 	while (!close) {
-		while ((choix != "1") && (choix != "2") && (choix != "3")) {
+		while ((choix != "1") && (choix != "2") && (choix != "3") && (choix != "4")) {
 			cout << "\n Que voulez-vous faire ?\n";
 			cout << "Tapez le numero corresondant a votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
@@ -106,25 +106,35 @@ int main()
 				cout <<"- "<< *it <<"\n";
 			}
 		}
-		if (choix == "2") {
+		else if (choix == "2") {
 			for (int j = 0; j < tabPatientFinal.size(); j++) {
 				Patient unPatient = tabPatientFinal[j];
 				unPatient.AffichagePatient(true);
 			}
 		}
-		if (choix == "3") {
+		else if (choix == "3") {
 			for (int j = 0; j < tabPatientFinal.size(); j++) {
 				Patient unPatient = tabPatientFinal[j];
 				unPatient.AffichagePatient(false);
 			}
 		}
-		if (choix == "4") {
+		else if (choix == "4") {
 			close = true;
 		}
 		choix = "";
 	}
 	cout << "\nBonne journee a vous et a bientot ;)" << endl;
 	system("pause"); //to let the user read the goodbye message
+
+	for (int j = 0; j < tabMaladie.size(); j++) { // cherhcer les maladies distinctes
+		Maladie uneMaladie = tabMaladie[j];
+		uneMaladie.destroySignature();
+	}
+
+	for (int i = 0; i < tabPatient.size(); i++) {
+		Patient unPatient = tabPatient[i];
+		unPatient.destroySignature();
+	}
 
 	return 0;
 

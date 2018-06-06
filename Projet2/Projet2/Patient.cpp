@@ -15,7 +15,7 @@ void Patient::AffichagePatient(bool versionCourte) {
 	cout << "\n";
 	cout << "Patient avec id " << uneSignature.getIdSignature() <<" peut avoir les maladies suivants:\n"; //we put *(int*) to get the value not the @ YOLO!
 	if (versionCourte) {
-		//calculerProbMaladiesDistinctes();
+		calculerProbMaladiesDistinctes();
 		map<string, double>::iterator it;
 		for (it = risqueMaladiesDistinctes.begin(); it != risqueMaladiesDistinctes.end(); ++it) {
 			cout << "- " << (*it).first << " " << (*it).second*100 << "%\n";
@@ -37,10 +37,22 @@ void Patient::ajouterRisqueMaladieDistincte(pair<string, double> risqueUneMaladi
 	risqueMaladiesDistinctes.insert(risqueUneMaladie);
 }
 
-void Patient::calculerProbMaladiesDistinctes() {
+multimap<string, double> Patient::getRisqueMaladies() {
+	return risqueMaladies;
+}
+
+Signature Patient::getSignature() {
+	return uneSignature;
+}
+
+void Patient::destroySignature() {
+	uneSignature.destroyS();
+}
+
+void Patient::calculerProbMaladiesDistinctes() { // to insert the average of proba of each distinct maladie
 	multimap<string, double>::iterator it;
 	map<string, double>::iterator itDist;
-	for (itDist = risqueMaladiesDistinctes.begin(); itDist != risqueMaladies.end(); itDist++) {
+	for (itDist = risqueMaladiesDistinctes.begin(); itDist != risqueMaladiesDistinctes.end(); itDist++) {
 		double risqueTotUneMaladie = 0;
 		int nbCetteMaladie = 0;
 		for (it = risqueMaladies.begin(); it != risqueMaladies.end(); it++) {
@@ -52,14 +64,6 @@ void Patient::calculerProbMaladiesDistinctes() {
 		double risqueMoyPerMaladie = risqueTotUneMaladie / nbCetteMaladie;
 		itDist->second = risqueMoyPerMaladie;
 	}
-}
-
-multimap<string, double> Patient::getRisqueMaladies() {
-	return risqueMaladies;
-}
-
-Signature Patient::getSignature() {
-	return uneSignature;
 }
 
 Patient::~Patient()

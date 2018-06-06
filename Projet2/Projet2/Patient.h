@@ -14,6 +14,7 @@ public:
 	void ajouterRisqueMaladieDistincte(pair<string, double> risqueUneMaladie);
 	multimap<string, double> getRisqueMaladies();
 	Signature getSignature();
+	void destroySignature();
 	~Patient();
 
 private:

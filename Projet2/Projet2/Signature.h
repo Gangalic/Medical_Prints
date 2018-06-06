@@ -9,6 +9,8 @@ public:
 	void AjouterAttribut(Attribut * nouvAttribut);
 	int getIdSignature();
 	vector <Attribut *> getTabAttributs();
+	void destroyS();
+
 	Signature();
 	~Signature();
 protected:
