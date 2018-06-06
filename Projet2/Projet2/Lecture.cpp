@@ -12,14 +12,21 @@ Lecture::Lecture(string fichierMeta, string fichierMal, string fichierPat) {
 	nomFichierMeta = fichierMeta;
 	nomFichierMal = fichierMal;
 	nomFichierPat = fichierPat;
+	lectureReussie = true;
 
 
 	ifstream fichier(nomFichierMeta, ios::in);  // on ouvre en lecture
-	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
-	getline(fichier, contenu);
-	while (getline(fichier, contenu))
-	{
-		metadonnees.push_back(contenu);
+	if (fichier.fail()) {
+		cout << "Fichier metadonnes introuvable\n";
+		lectureReussie = false;
+	}
+	else {
+		string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
+		getline(fichier, contenu);
+		while (getline(fichier, contenu))
+		{
+			metadonnees.push_back(contenu);
+		}
 	}
 
 	fichier.close();
@@ -31,20 +38,28 @@ vector<Maladie> Lecture::LireMaladies()
 {
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
 	ifstream fi;
+	vector<Maladie> tabMaladies;
 
 	fi.open(nomFichierMal);
-	getline(fi, contenu);
 
-	vector<Maladie> tabMaladies;
-	while (contenu != "")
-	{
-
+	if (fi.fail()) {
+		cout << "Fichier maladies introuvable\n";
+		lectureReussie = false;
+	}
+	else {
 		getline(fi, contenu);
-		if (contenu != "")
-		{
-			tabMaladies.push_back(LireUneMaladie(contenu));
-		}
 
+		while (contenu != "")
+		{
+
+			getline(fi, contenu);
+			if (contenu != "")
+			{
+				Maladie uneMaladie = LireUneMaladie(contenu);
+				tabMaladies.push_back(uneMaladie);
+			}
+
+		}
 	}
 	return tabMaladies;
 }
@@ -53,18 +68,28 @@ vector<Patient> Lecture::LirePatients()
 {
 	string contenu;  // déclaration d'une chaîne qui contiendra la ligne lue
 	ifstream fi;
-	fi.open(nomFichierPat);
-	getline(fi, contenu);
 	vector<Patient> tabPatients;
-	while (contenu != "")
-	{
 
+	fi.open(nomFichierPat);
+	
+	if (fi.fail()) {
+		cout << "Fichier patients introuvable\n";
+		lectureReussie = false;
+	}
+	else {
 		getline(fi, contenu);
-		if (contenu != "")
+		while (contenu != "")
 		{
-			tabPatients.push_back(Patient(LireUneSignature(contenu)));
-		}
 
+			getline(fi, contenu);
+			if (contenu != "")
+			{
+				Signature uneSignature = LireUneSignature(contenu);
+				Patient unPatient = Patient(uneSignature);
+				tabPatients.push_back(unPatient);
+			}
+
+		}
 	}
 	return tabPatients;
 }
@@ -78,19 +103,20 @@ Signature Lecture::LireUneSignature(string line)
 	Attribut * attr;
 	int i = 0;
 	while (getline(ss, info, ';'))
-	{
-		if (metadonnees[i].substr(metadonnees[i].find(';') + 1, metadonnees[i].length()) == "ID")
+	{	
+		string uneMetadonnee = metadonnees[i];
+		if (uneMetadonnee.substr(uneMetadonnee.find(';') + 1, uneMetadonnee.length()) == "ID")
 		{
-			attr = new AttributID(info, metadonnees[i].substr(0, metadonnees[i].find(';')));
+			attr = new AttributID(info, uneMetadonnee.substr(0, uneMetadonnee.find(';')));
 		}
-		else if (metadonnees[i].substr(metadonnees[i].find(';') + 1, metadonnees[i].length()) == "double")
+		else if (uneMetadonnee.substr(uneMetadonnee.find(';') + 1, uneMetadonnee.length()) == "double")
 		{
 
-			attr = new AttributNum(info, metadonnees[i].substr(0, metadonnees[i].find(';')));
+			attr = new AttributNum(info, uneMetadonnee.substr(0, uneMetadonnee.find(';')));
 		}
-		else if (metadonnees[i].substr(metadonnees[i].find(';') + 1, metadonnees[i].length()) == "string")
+		else if (uneMetadonnee.substr(uneMetadonnee.find(';') + 1, uneMetadonnee.length()) == "string")
 		{
-			attr = new AttributCarac(info, metadonnees[i].substr(0, metadonnees[i].find(';')));
+			attr = new AttributCarac(info, uneMetadonnee.substr(0, uneMetadonnee.find(';')));
 		}
 		else
 		{
@@ -120,6 +146,10 @@ Maladie Lecture::LireUneMaladie(string line)
 	}
 	Maladie laMaladie = Maladie(nom, laSignature);
 	return laMaladie;
+}
+
+bool Lecture::getLectureReussie() {
+	return lectureReussie;
 }
 
 

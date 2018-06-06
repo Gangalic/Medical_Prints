@@ -13,7 +13,7 @@ Maladie::Maladie(string leNom, Signature laSignature)
 
 // shows only the name + maybe add Signature details later
 void Maladie::AffichageMaladie() {
-	cout << nomMaladie <<"\n";
+	cout <<"- "<< nomMaladie <<"\n";
 }
 
 string Maladie::getNom() {

@@ -15,7 +15,7 @@ void Patient::AffichagePatient() {
 	cout << "\n";
 	cout << "Patient avec id " << uneSignature.getIdSignature() <<" a les maladies suivants:\n"; //we put *(int*) to get the value not the @ YOLO!
 	for (multimap<string, double>::iterator it = risqueMaladies.begin(); it != risqueMaladies.end(); ++it) {
-		cout << (*it).first << " " << (*it).second << "\n";
+		cout <<"- "<<(*it).first << " " << (*it).second << "\n";
 	}
 }
 

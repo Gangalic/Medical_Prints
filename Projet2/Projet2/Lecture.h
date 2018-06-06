@@ -18,6 +18,7 @@ public:
 	Signature LireUneSignature(string ligne);
 	vector<Patient> LirePatients();
 	vector<Maladie>  LireMaladies();
+	bool getLectureReussie();
 	~Lecture();
 
 protected:
@@ -25,6 +26,7 @@ protected:
 	string nomFichierMal;
 	string nomFichierPat;
 	vector <string> metadonnees;
+	bool lectureReussie;
 };
 
 #endif

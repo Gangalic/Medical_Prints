@@ -30,29 +30,32 @@ int main()
 	string nomFichierMeta;
 	string nomFichierMaladie;
 	string nomFichierPatient;
-	/*cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
-	cout << "Quelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
+	cout << "Bonjour, j'espere que vous passer une bonne journee." << endl;
+	cout << "\nQuelle est le nom du fichier de metadonnee que vous voulez analyser ? " << endl;
 	cin >> nomFichierMeta;
 	cout << "Vous avez choisi le fichier : " << nomFichierMeta << endl;
 
-	cout << "Quelle est le nom du fichier Maladie que vous voulez analyser ? " << endl;
+	cout << "\nQuelle est le nom du fichier Maladie que vous voulez analyser ? " << endl;
 	cin >> nomFichierMaladie;
 	cout << "Vous avez choisi le fichier : " << nomFichierMaladie << endl;
 
-	cout << "Quelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
-
+	cout << "\nQuelle est le nom du fichier Patient que vous voulez analyser ? " << endl;
 	cin >> nomFichierPatient;
-	cout << "Vous avez choisi le fichier : " << nomFichierPatient << endl;*/
+	cout << "Vous avez choisi le fichier : " << nomFichierPatient << "\n"<< endl;
 	
-	nomFichierMeta = "C:\\GL\\meta.txt";
+	/*nomFichierMeta = "C:\\GL\\meta.txt";
 	nomFichierMaladie = "C:\\GL\\mal.txt";
 	nomFichierPatient = "C:\\GL\\p.txt";
 	cout << "Vous avez choisi le fichier meta : " << nomFichierMeta << endl;
 	cout << "Vous avez choisi le fichier Maladie : " << nomFichierMaladie << endl;
-	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << endl;
+	cout << "Vous avez choisi le fichier Patient : " << nomFichierPatient << endl;*/
 
 
 	Lecture lect = Lecture(nomFichierMeta, nomFichierMaladie, nomFichierPatient);
+	if (!lect.getLectureReussie()) { // if couldn't find the metadata file
+		system("pause");
+		return 0;
+	}
 
 	string choix = "0";
 	vector <Maladie> tabMaladie = lect.LireMaladies();
@@ -60,15 +63,21 @@ int main()
 	vector <Patient> tabPatientFinal;
 	Analyse analyse = Analyse();
 	bool close = false;
+
+	if (!lect.getLectureReussie()) { // if couldn't find illness or patient files
+		system("pause");
+		return 0;
+	}
 	for (int i = 0; i < tabPatient.size(); i++) {
 		Patient unPatient = tabPatient[i];
-		tabPatientFinal.push_back(analyse.FaireAnalyse(tabPatient[i], tabMaladie));
+		unPatient = analyse.FaireAnalyse(unPatient, tabMaladie);
+		tabPatientFinal.push_back(unPatient);
 	}
 
 	while (!close) {
 		while ((choix != "1") && (choix != "2") && (choix != "3")) {
 			cout << "\n Que voulez-vous faire ?\n";
-			cout << "Tapez le numero corresondant à votre demmande." << endl;
+			cout << "Tapez le numero corresondant a votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
 			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
 			cout << "3. Quitter" << endl;
@@ -78,13 +87,16 @@ int main()
 			}
 		}
 		if (choix == "1") {
+			cout << "\nNous avons les maladies suivants:\n";
 			for (int j = 0; j < tabMaladie.size(); j++) {
-				tabMaladie[j].AffichageMaladie();
+				Maladie uneMaladie = tabMaladie[j];
+				uneMaladie.AffichageMaladie();
 			}
 		}
 		if (choix == "2") {
 			for (int j = 0; j < tabPatientFinal.size(); j++) {
-				tabPatientFinal[j].AffichagePatient();
+				Patient unPatient = tabPatientFinal[j];
+				unPatient.AffichagePatient();
 			}
 		}
 		if (choix == "3") {
@@ -92,8 +104,8 @@ int main()
 		}
 		choix = "";
 	}
-	cout << "Bonne journée à vous et a bientôt ;)" << endl;
-
+	cout << "\nBonne journee a vous et a bientot ;)" << endl;
+	system("pause"); //to let the user read the goodbye message
 
 	return 0;
 
