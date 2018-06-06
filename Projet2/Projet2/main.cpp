@@ -91,10 +91,11 @@ int main()
 			cout << "\n Que voulez-vous faire ?\n";
 			cout << "Tapez le numero corresondant a votre demmande." << endl;
 			cout << "1. Afficher toutes les maladies" << endl;
-			cout << "2. Afficher les patients avec leur risque d'etre atteint par chaque maladie" << endl;
-			cout << "3. Quitter" << endl;
+			cout << "2. Afficher les patients avec leur risque d'etre malade (version courte)" << endl;
+			cout << "3. Afficher les patients avec leur risque d'etre malade (version longue)" << endl;
+			cout << "4. Quitter" << endl;
 			cin >> choix;
-			if (choix != "1" && choix != "2" && choix != "3") {
+			if (choix != "1" && choix != "2" && choix != "3" && choix != "4") {
 				cout << "\n Choix invalide, veuillez reessayer" << endl;
 			}
 		}
@@ -108,10 +109,16 @@ int main()
 		if (choix == "2") {
 			for (int j = 0; j < tabPatientFinal.size(); j++) {
 				Patient unPatient = tabPatientFinal[j];
-				unPatient.AffichagePatient();
+				unPatient.AffichagePatient(true);
 			}
 		}
 		if (choix == "3") {
+			for (int j = 0; j < tabPatientFinal.size(); j++) {
+				Patient unPatient = tabPatientFinal[j];
+				unPatient.AffichagePatient(false);
+			}
+		}
+		if (choix == "4") {
 			close = true;
 		}
 		choix = "";

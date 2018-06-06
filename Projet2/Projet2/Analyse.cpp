@@ -62,6 +62,7 @@ Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 		uneMaladie = maladies[i];
 		pair<string, double> risqueUneMaladie = make_pair((string)uneMaladie.getNom(), risque);
 		patient->ajouterRisqueMaladie(risqueUneMaladie);
+		patient->ajouterRisqueMaladieDistincte(risqueUneMaladie);
 	}
 	return *patient;
 }
