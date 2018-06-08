@@ -11,7 +11,8 @@ Maladie::Maladie(string leNom, Signature laSignature)
 	uneSignature = laSignature;
 }
 
-// shows only the name + maybe add Signature details later
+// shows only the name
+// possible to add signature details later, if needed
 void Maladie::AffichageMaladie() {
 	cout <<"- "<< nomMaladie <<"\n";
 }
@@ -24,6 +25,7 @@ Signature Maladie::getSignature() {
 	return uneSignature;
 }
 
+// to have controlled memory freeing
 void Maladie::destroySignature() {
 	uneSignature.destroyS();
 }
