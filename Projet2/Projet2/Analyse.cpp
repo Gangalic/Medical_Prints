@@ -3,9 +3,8 @@ using namespace std;
 #include <string>
 #include <cmath>
 #include <utility>
-#include <iostream> //to delete
+#include <iostream>
 #include "Analyse.h"
-
 
 
 Analyse::Analyse()
@@ -62,6 +61,7 @@ Patient Analyse::FaireAnalyse(Patient unPatient, vector<Maladie> maladies)
 		uneMaladie = maladies[i];
 		pair<string, double> risqueUneMaladie = make_pair((string)uneMaladie.getNom(), risque);
 		patient->ajouterRisqueMaladie(risqueUneMaladie);
+		// just adding only the distinct illnesses without carrying about their proba for now
 		patient->ajouterRisqueMaladieDistincte(risqueUneMaladie);
 	}
 	return *patient;
@@ -71,6 +71,7 @@ vector<double> Analyse::risqueNumerique(Attribut* attPatient, vector<Attribut*> 
 {
 	vector<double> proba;
 	double delta;
+	// just 2 random big and small numbers
 	double min = 100000.0;
 	double max = -100000.0;
 	// finding the ranges of an attribute
