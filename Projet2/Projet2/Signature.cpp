@@ -12,7 +12,8 @@ Signature::Signature()
 {
 }
 
-// maybe to add to search it by type not just assume it's the first one
+// possible improvement:
+// search it by type not just assume it's the first one
 int Signature::getIdSignature() {
 	return *(int*)tabAttributs[0]->getValue();
 }
@@ -30,11 +31,5 @@ void Signature::destroyS() {
 
 Signature::~Signature()
 {
-	// we don't give a **** about memory
-	//oh actually we do :'( :/ :(
-	/*vector<Attribut*>::iterator vIter;
-	for (vIter = tabAttributs.begin(); vIter != tabAttributs.end(); vIter++) {
-		delete * vIter;
-	}*/
 	tabAttributs.clear();
 }
