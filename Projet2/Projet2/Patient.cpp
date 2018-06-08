@@ -45,6 +45,7 @@ Signature Patient::getSignature() {
 	return uneSignature;
 }
 
+// to have a controlled memory freeing
 void Patient::destroySignature() {
 	uneSignature.destroyS();
 }
