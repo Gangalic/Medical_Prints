@@ -19,7 +19,7 @@ namespace UnitTest1
 		
 		TEST_METHOD(TestMethod1)
 		{
-			//test pour class Signature getIdsignature() et AjouterAttribut()
+			//test des méthodes getIdsignature et AjouterAttribut pour la classe Signature 
 			string ID = "11111";
 			string name = "ID";
 			AttributID *aID = new AttributID(ID, name);
@@ -36,7 +36,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod2)
 		{
-			//test pour la class Analyse risqueNumerique()
+			//test de la méthode risqueNumerique pour la classe Analyse 
 			string name1 = "NUM";
 			
 			AttributNum *aNum = new AttributNum("10", name1);
@@ -56,7 +56,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod3)
 		{
-			//test pour la class Analyse risqueCategorique()
+			//test de la méthode risqueCategorique pour la classe Analyse
 
 			AttributCarac *aCate = new AttributCarac("true", "cate");
 			vector <Attribut*> va;
@@ -75,7 +75,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod4)
 		{
-			//test pour class Signature getTabAttribut()
+			//test de la méthode getTabAttribut pour la classe Signature 
 			Signature s;
 			AttributCarac *aCate = new AttributCarac("true", "cate");
 			vector <Attribut*> va;
@@ -94,7 +94,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod5)
 		{
-			//test pour class Maladie getNom()
+			//test de la méthode getNom pour la classe Maladie
 			Signature s;
 			Maladie *m = new Maladie("lenom",s);
 			string nom = m->getNom();
@@ -110,7 +110,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod6)
 		{
-			//test pour class Maladie getSignature()
+			//test de la méthode getSignature pour la classe Maladie 
 			string ID = "11111";
 			string name = "ID";
 			AttributID *aID = new AttributID(ID, name);
@@ -130,7 +130,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod7)
 		{
-			//test pour class Patient getSignature()
+			//test de la méthode getSignature pour la classe Patient 
 			string ID = "11111";
 			string name = "ID";
 			AttributID *aID = new AttributID(ID, name);
@@ -150,7 +150,7 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod8)
 		{
-			//test d'integration pour class Analyse FaireAnalyse ()
+			//test d'integration de la méthode FaireAnalyse pour la classe Analyse 
 			
 			Signature s;
 			AttributNum *aNum = new AttributNum("10", "lenom");
@@ -171,5 +171,5 @@ namespace UnitTest1
 			);
 		}
 		
-	};
+    }
 }
